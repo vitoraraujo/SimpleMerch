@@ -1,6 +1,20 @@
-<h1>Editing User</h1>
+<h1>Editando informações do usuário</h1>
 
-<%= render 'form', user: @user %>
+<div class="row">
+  <div class="col-md-6">
+    <%= form_for(@user) do |f| %>
+      <%= f.label :name, "Nome:" %>
+      <%= f.text_field :name %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+      <%= f.label :password,"Senha:" %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Confirme sua senha:" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "Editar minha conta", class: "btn btn-primary" %>
+    <% end %>
+
+    <%= link_to "Voltar", root_path%></p>
+  </div>
+</div>

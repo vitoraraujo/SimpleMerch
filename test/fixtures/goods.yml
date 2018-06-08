@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyString
+  quantity: 1
+  user_id: 1
+  buy_price: 1.5
+  sell_price: 1.5
+  buyed_from: MyString
+  sold_to: MyString
+  buy_day: 1
+  buy_month: 1
+  buy_year: 1
+  sell_day: 1
+  sell_month: 1
+  sell_year: 1
+  type: 
+
+two:
+  description: MyString
+  quantity: 1
+  user_id: 1
+  buy_price: 1.5
+  sell_price: 1.5
+  buyed_from: MyString
+  sold_to: MyString
+  buy_day: 1
+  buy_month: 1
+  buy_year: 1
+  sell_day: 1
+  sell_month: 1
+  sell_year: 1
+  type: 

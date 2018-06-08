@@ -1,0 +1,32 @@
+<h1>Despesa:</h1>
+
+<div class="row">
+  <div class="col-md-3">
+    <%= form_for @expense, html: { autocomplete: "off" } do |f| %>
+    
+    <%= f.label :cost, "Custo:" %>
+    <%= f.number_field :cost, step: 0.01%>
+
+    <%= f.label :kind, "Tipo de custo: (Opcional)" %>
+    <%= f.text_field :kind %>
+
+    <%= f.label :reason, "Motivo: (Opcional)" %>
+    <%= f.text_field :reason %>
+
+    <%= f.label :day, "Dia:" %>
+    <%= f.number_field :day %>
+
+    <%= f.label :month, "Mês:" %>
+    <%= f.number_field :month %>
+
+    <%= f.label :year, "Ano:" %>
+    <%= f.number_field :year %>
+
+    <%= f.submit "Cadastrar despesa", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<h4> Por que não preencher todas as informações da despesa? Irá facilitar sua busca posteriormente ;) </h4>
+
+<%= link_to "Back", :back %>

@@ -1,14 +1,10 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<section style="float: right;">
+	<%= link_to 'Editar conta', edit_user_path(@user) %>
+</section>
+<br>
+<%= link_to "Busca" %>
+<%= link_to "Histórico" %>
+<%= link_to "Estoque" %>
+<%= link_to "Cadastra Nova Mercadoria", new_good_path%>
+<%= link_to "Cadastrar Venda" %>
+<%= link_to "Cadastrar Despesa", new_expense_path %>
