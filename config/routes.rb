@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :sales
   resources :expenses
   get    '/signup',  to: 'users#new'
   get    '/login',   to: 'sessions#new'

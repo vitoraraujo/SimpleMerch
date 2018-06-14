@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   has_many :goods, dependent: :destroy
   has_many :expenses, dependent: :destroy
+  has_many :sales, dependent: :destroy
   
   has_secure_password
 

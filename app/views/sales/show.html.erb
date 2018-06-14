@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @sale.user_id %>
+</p>
+
+<p>
+  <strong>Good:</strong>
+  <%= @sale.good_id %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @sale.quantity %>
+</p>
+
+<p>
+  <strong>Sell price:</strong>
+  <%= @sale.sell_price %>
+</p>
+
+<p>
+  <strong>Sold to:</strong>
+  <%= @sale.sold_to %>
+</p>
+
+<p>
+  <strong>Sell day:</strong>
+  <%= @sale.sell_day %>
+</p>
+
+<p>
+  <strong>Sell month:</strong>
+  <%= @sale.sell_month %>
+</p>
+
+<p>
+  <strong>Sell year:</strong>
+  <%= @sale.sell_year %>
+</p>
+
+<%= link_to 'Edit', edit_sale_path(@sale) %> |
+<%= link_to 'Back', sales_path %>

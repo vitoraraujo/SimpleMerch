@@ -25,7 +25,6 @@ class GoodsController < ApplicationController
   # POST /goods.json
   def create
     @good = current_user.goods.build(good_params)
-    @good.sold = false
     if @good.save
       flash[:success] = "Mercadoria criada!"
       redirect_to current_user
@@ -59,6 +58,6 @@ class GoodsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def good_params
-      params.require(:good).permit(:description, :quantity, :user_id, :buy_price, :sell_price, :buyed_from, :sold_to, :buy_day, :buy_month, :buy_year, :sell_day, :sell_month, :sell_year, :kind, :note)
+      params.require(:good).permit(:description, :quantity, :user_id, :buy_price, :buyed_from, :buy_day, :buy_month, :buy_year, :kind, :note)
     end
 end
