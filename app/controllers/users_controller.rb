@@ -52,6 +52,15 @@ class UsersController < ApplicationController
     redirect_to current_user
   end
 
+  def goods_history
+  end
+
+  def sales_history
+  end
+
+  def expenses_history
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

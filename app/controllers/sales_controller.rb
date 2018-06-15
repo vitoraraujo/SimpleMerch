@@ -14,7 +14,7 @@ class SalesController < ApplicationController
   # GET /sales/new
   def new
     @good = Good.find(params[:param])
-    redirect_to(goods_url) unless current_user.id == @good.user_id || current_user.admin?
+    redirect_to(goods_url) unless current_user.id == @good.user_id || current_user.admin? || @good.quantity == 0
     @sale = Sale.new
   end
 
@@ -30,7 +30,7 @@ class SalesController < ApplicationController
     if @sale.save
       quantity = @good.quantity - @sale.quantity
       if @good.update(:quantity => quantity)
-        redirect_to current_user
+        redirect_to goods_url
       else
       end
     else

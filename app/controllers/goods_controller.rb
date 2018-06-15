@@ -4,7 +4,8 @@ class GoodsController < ApplicationController
   # GET /goods
   # GET /goods.json
   def index
-    @goods = Good.all
+    @goods = current_user.goods.where("quantity > ?", 0)
+    @soldgoods = current_user.goods.where(:quantity => 0)
   end
 
   # GET /goods/1

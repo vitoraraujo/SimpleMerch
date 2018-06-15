@@ -1,5 +1,7 @@
 <p>
 	<%= good.description %>
 	<%= good.quantity %>
-	<%= link_to "Vender", new_sale_path(:param => good.id.to_s) %>
+	<% if good.quantity > 0 %>
+		<%= link_to "Vender", new_sale_path(:param => good.id) %>
+	<% end %>
 </p>

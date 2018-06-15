@@ -1,1 +1,6 @@
 <%= render @goods %>
+
+<% if @soldgoods.any? %>
+	<h4>Mercadorias fora de estoque:</h4>
+	<%= render @soldgoods %>
+<% end %>
