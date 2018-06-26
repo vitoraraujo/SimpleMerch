@@ -1,5 +1,49 @@
-<h1>New Sale</h1>
+<h1 align="center">Cadastrar Venda</h1>
 
-<%= render 'form', sale: @sale %>
+<h3 align="center">Vendendo <%= @good.description %></h3>
 
-<%= link_to 'Back', sales_path %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <%= form_for @sale, html: { autocomplete: "off" } do |f| %>
+      <div class="field">
+        <%= f.label :quantity, "Quantidade:" %>
+        <%= f.number_field :quantity, class: 'form-control' %>
+  	  </div>
+
+      <div class="field">
+      <%= f.label :sell_price, "Preço de venda por unidade:" %>
+      <%= f.number_field :sell_price, step: 0.01, class: 'form-control' %>
+  	  </div>
+
+      <div class="field">
+      <%= f.label :sold_to, "Vendido a: (Opcional)" %>
+      <%= f.text_field :sold_to, class: 'form-control' %>
+  	  </div>
+
+      <div class="field">
+      <%= f.label :sell_day , "Dia da venda:" %>
+      <%= f.number_field :sell_day, class: 'form-control' %>
+  	  </div>
+
+      <div class="field">
+      <%= f.label :sell_month, "Mês da venda:" %>
+      <%= f.number_field :sell_month, class: 'form-control' %>
+  	  </div>
+
+      <div class="field">
+      <%= f.label :sell_year, "Ano da venda:" %>
+      <%= f.number_field :sell_year, class: 'form-control' %>
+  	  </div>
+
+  	  <%= f.hidden_field :good_id, :value => @good.id %>
+  	  
+  	  <br>
+ 	  <div class="actions">
+        <%= f.submit "Cadastrar Venda", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<h4 align="center"> Por que não preencher todas as informações da mercadoria? Irá facilitar sua busca posteriormente :D </h4>
+<%= link_to 'Back', :back %>

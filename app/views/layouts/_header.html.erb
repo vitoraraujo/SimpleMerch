@@ -1,12 +1,21 @@
 <header >
-    <section class="header col-xs-12">
+    <div align="center" class="header col-xs-12">
 		<% if logged_in? %>
-			<article style="float: left; margin-top: 14px">
-				<%= link_to "Menu", current_user %>
-			</article>
-			<article style="float: right; margin-top: 9px">
-				<%= button_to "Sair", logout_path, method: :delete, class: "btn btn-sm btn-hover btn-default col-xs" %>	
-			</article>
+			<div class="header-menu">
+				<%= link_to current_user do %>
+					<%= image_tag "menu-icon.png" %>
+				<% end %>
+			</div>
+			<div class="simplemerch-icon">
+				<%= image_tag "simplemerch-icon.png" %>
+			</div>
+			<div class="header-logout">
+				<%= button_to "Sair", logout_path, method: :delete, class: "btn btn-sm btn-hover btn-default" %>	
+			</div>
+		<% else %>
+			<div class="simplemerch-icon">
+				<%= image_tag "simplemerch-icon.png" %>
+			</div>			
 		<% end %>
-	</section>
+	</div>
 </header>

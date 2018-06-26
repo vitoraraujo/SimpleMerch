@@ -52,13 +52,13 @@ class UsersController < ApplicationController
     redirect_to current_user
   end
 
-  def goods_history
+  def history_search
+    
   end
-
-  def sales_history
-  end
-
-  def expenses_history
+  def history
+    @goods = current_user.goods.all
+    @sales = current_user.sales.all;
+    @expenses = current_user.expenses.all;
   end
   
   private

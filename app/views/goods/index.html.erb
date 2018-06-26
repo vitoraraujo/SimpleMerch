@@ -1,5 +1,9 @@
-<%= render @goods %>
-
+<% if @goods.any? %>
+	<h4>Mercadorias em estoque:</h4>
+	<%= render @goods %>
+<% else %>
+	Nenhuma mercadoria.. <%= link_to "Cadastrar nova mercadoria?", new_good_path %>
+<% end %>
 <% if @soldgoods.any? %>
 	<h4>Mercadorias fora de estoque:</h4>
 	<%= render @soldgoods %>

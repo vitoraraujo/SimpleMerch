@@ -1,32 +1,44 @@
-<h1>Despesa:</h1>
+<h1 align="center">Despesa:</h1>
 
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-8 col-md-offset-2">
     <%= form_for @expense, html: { autocomplete: "off" } do |f| %>
-    
-    <%= f.label :cost, "Custo:" %>
-    <%= f.number_field :cost, step: 0.01%>
+        
+      <div class="field">
+        <%= f.label :cost, "Custo:" %>
+        <%= f.number_field :cost, step: 0.01, class: 'form-control'%>
+      </div>
 
-    <%= f.label :kind, "Tipo de custo: (Opcional)" %>
-    <%= f.text_field :kind %>
+      <div class="field">
+        <%= f.label :kind, "Tipo de custo: (Opcional)" %>
+        <%= f.text_field :kind, class: 'form-control' %>
+      </div>
 
-    <%= f.label :reason, "Motivo: (Opcional)" %>
-    <%= f.text_field :reason %>
+      <div class="field">
+        <%= f.label :reason, "Motivo: (Opcional)" %>
+        <%= f.text_field :reason, class: 'form-control' %>
+      </div>
 
-    <%= f.label :day, "Dia:" %>
-    <%= f.number_field :day %>
+      <div class="field">
+        <%= f.label :day, "Dia:" %>
+        <%= f.number_field :day, class: 'form-control' %>
+      </div>
 
-    <%= f.label :month, "Mês:" %>
-    <%= f.number_field :month %>
+      <div class="field">
+        <%= f.label :month, "Mês:" %>
+        <%= f.number_field :month, class: 'form-control' %>
+      </div>
 
-    <%= f.label :year, "Ano:" %>
-    <%= f.number_field :year %>
-
+      <div class="field">
+        <%= f.label :year, "Ano:" %>
+        <%= f.number_field :year, class: 'form-control' %>
+      </div>
+      <br>
     <%= f.submit "Cadastrar despesa", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
 
-<h4> Por que não preencher todas as informações da despesa? Irá facilitar sua busca posteriormente ;) </h4>
+<h4 align="center"> Por que não preencher todas as informações da despesa? Irá facilitar sua busca posteriormente ;) </h4>
 
 <%= link_to "Back", :back %>

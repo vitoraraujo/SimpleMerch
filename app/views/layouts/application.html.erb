@@ -10,7 +10,8 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <main class="col-xs-12">
+    <div class="bigDiv">
+    <main class="col-md-8 col-md-offset-2">
       <div class="flashDiv">
         <% flash.each do |message_type, message| %>
           <div style="text-align: center" class="alert alert-<%= message_type %>"><%= message %></div>
@@ -18,5 +19,6 @@
         </div>
       <%= yield %>
     </main>
+  </div>
   </body>
 </html>

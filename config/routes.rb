@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   
-  resources :sales
-  resources :expenses
+  get    '/history', to: 'users#history'
   get    '/signup',  to: 'users#new'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
@@ -9,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :users, exception: [:new, :create]
   resources :goods
+  resources :expenses
+  resources :sales
 
   resources :users do
   	get :current, on: :collection # users#current

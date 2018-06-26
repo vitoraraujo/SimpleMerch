@@ -4,7 +4,7 @@ class Good < ApplicationRecord
 
 	default_scope -> { order(created_at: :desc) }
 	validates :user_id, presence: true
-	validates :description, presence: true
+	validates :description, presence: true, uniqueness: { case_sensitive: false}
 	validates :quantity, presence: true
 	validates :buy_price, presence: true
 	validates :buy_day, presence: true

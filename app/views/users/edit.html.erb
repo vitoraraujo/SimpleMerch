@@ -1,20 +1,25 @@
-<h1>Editando informações do usuário</h1>
+<h1 align="center">Editando informações do usuário</h1>
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-6 col-md-offset-3">
     <%= form_for(@user) do |f| %>
-      <%= f.label :name, "Nome:" %>
-      <%= f.text_field :name %>
+      <div class="field">
+        <%= f.label :name, "Nome:" %>
+        <%= f.text_field :name, class: 'form-control'  %>
+      </div>
 
-      <%= f.label :password,"Senha:" %>
-      <%= f.password_field :password %>
+      <div class="field">
+        <%= f.label :password,"Senha:" %>
+        <%= f.password_field :password, class: 'form-control'  %>
+      </div>
 
-      <%= f.label :password_confirmation, "Confirme sua senha:" %>
-      <%= f.password_field :password_confirmation %>
-
+      <div class="field">
+        <%= f.label :password_confirmation, "Confirme sua senha:" %>
+        <%= f.password_field :password_confirmation, class: 'form-control'  %>
+      </div>
+      <br>
       <%= f.submit "Editar minha conta", class: "btn btn-primary" %>
     <% end %>
-
     <%= link_to "Voltar", root_path%></p>
   </div>
 </div>
