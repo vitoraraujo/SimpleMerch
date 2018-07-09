@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Bem-vindo ao Simple Merch, o seu mais novo gerenciador de mercadorias!"
+      flash[:success] = "Bem-vindo ao Simple Merch!"
       log_in @user
       redirect_to @user
     else
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
   def history_search
     
   end
-  def history
+  def geral
     @goods = current_user.goods.all
     @sales = current_user.sales.all;
     @expenses = current_user.expenses.all;

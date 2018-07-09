@@ -12,7 +12,7 @@
 
       <div class="field">
       <%= f.label :sell_price, "Preço de venda por unidade:" %>
-      <%= f.number_field :sell_price, step: 0.01, class: 'form-control' %>
+      <%= f.text_field :sell_price, step: 0.01, class: 'form-control' %>
   	  </div>
 
       <div class="field">
@@ -20,25 +20,26 @@
       <%= f.text_field :sold_to, class: 'form-control' %>
   	  </div>
 
-      <div class="field">
-      <%= f.label :sell_day , "Dia da venda:" %>
-      <%= f.number_field :sell_day, class: 'form-control' %>
-  	  </div>
+      <div style="width: auto;">
+        <div class="inlineblockDiv">
+          <%= f.label :sell_day , "Dia:" %>
+          <%= f.text_field :sell_day, class: 'form-control', style: "width: 45px;" %>
+        </div>
 
-      <div class="field">
-      <%= f.label :sell_month, "Mês da venda:" %>
-      <%= f.number_field :sell_month, class: 'form-control' %>
-  	  </div>
+        <div class="inlineblockDiv">
+          <%= f.label :sell_month, "Mês:" %>
+          <%= f.text_field :sell_month, class: 'form-control', style: "width: 45px;" %>
+        </div>
 
-      <div class="field">
-      <%= f.label :sell_year, "Ano da venda:" %>
-      <%= f.number_field :sell_year, class: 'form-control' %>
-  	  </div>
+        <div class="inlineblockDiv">
+          <%= f.label :sell_year, "Ano:" %>
+          <%= f.text_field :sell_year, class: 'form-control', style: "width: 60px;" %>
+        </div>
+      </div>
 
   	  <%= f.hidden_field :good_id, :value => @good.id %>
-  	  
   	  <br>
- 	  <div class="actions">
+ 	    <div class="actions">
         <%= f.submit "Cadastrar Venda", class: "btn btn-primary" %>
       </div>
     <% end %>

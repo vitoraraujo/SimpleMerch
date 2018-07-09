@@ -1,11 +1,31 @@
 class GoodsController < ApplicationController
   before_action :set_good, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:show, :edit, :update, :destroy]
+
+  def searching
+  end
+
+  def search
+    @goods = Good.where("quantity > ?", 0)
+    @goods = @goods.where("description LIKE ?", "%#{params[:description]}%") if params[:description] != ""
+    @goods = @goods.where("buy_day LIKE ?", "%#{params[:buy_day]}%") if params[:buy_day] != ""
+    @goods = @goods.where("buy_month LIKE ?", "%#{params[:buy_month]}%") if params[:buy_month] != ""
+    @goods = @goods.where("buy_year LIKE ?", "%#{params[:buy_year]}%") if params[:buy_year] != ""
+    @goods = @goods.where("kind LIKE ?", "%#{params[:kind]}%") if params[:kind] != ""
+    @goods = @goods.where("buyed_from LIKE ?", "%#{params[:buyed_from]}%") if params[:buyed_from] != ""
+    
+    @stock_value = 0
+    @stock_quantity = 0
+    
+    render template: 'goods/index' 
+  end
 
   # GET /goods
   # GET /goods.json
   def index
     @goods = current_user.goods.where("quantity > ?", 0)
-    @soldgoods = current_user.goods.where(:quantity => 0)
+    @stock_value = 0
+    @stock_quantity = 0
   end
 
   # GET /goods/1
@@ -20,6 +40,9 @@ class GoodsController < ApplicationController
 
   # GET /goods/1/edit
   def edit
+    if good.quantity < 1
+      redirect_to root_url
+    end
   end
 
   # POST /goods
@@ -28,7 +51,7 @@ class GoodsController < ApplicationController
     @good = current_user.goods.build(good_params)
     if @good.save
       flash[:success] = "Mercadoria criada!"
-      redirect_to current_user
+      redirect_to goods_url
     else
       flash[:danger] = "Ops.. Algo não está correto!"
       render 'new'
@@ -60,5 +83,12 @@ class GoodsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def good_params
       params.require(:good).permit(:description, :quantity, :user_id, :buy_price, :buyed_from, :buy_day, :buy_month, :buy_year, :kind, :note)
+    end
+
+    def logged_in_user
+      unless logged_in?
+        flash[:success]= "Por favor, faça seu Log in"
+        redirect_to login_url
+      end
     end
 end

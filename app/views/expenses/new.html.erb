@@ -1,4 +1,4 @@
-<h1 align="center">Despesa:</h1>
+<h2 align="center">Despesa:</h2>
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
@@ -6,7 +6,7 @@
         
       <div class="field">
         <%= f.label :cost, "Custo:" %>
-        <%= f.number_field :cost, step: 0.01, class: 'form-control'%>
+        <%= f.text_field :cost, step: 0.01, class: 'form-control'%>
       </div>
 
       <div class="field">
@@ -18,21 +18,23 @@
         <%= f.label :reason, "Motivo: (Opcional)" %>
         <%= f.text_field :reason, class: 'form-control' %>
       </div>
+      <div style="width: auto;">
+        <div class="inlineblockDiv">
+          <%= f.label :day, "Dia:" %>
+          <%= f.text_field :day, class: 'form-control', style: "width: 45px;" %>
+        </div>
 
-      <div class="field">
-        <%= f.label :day, "Dia:" %>
-        <%= f.number_field :day, class: 'form-control' %>
+        <div class="inlineblockDiv">
+          <%= f.label :month, "Mês:" %>
+          <%= f.text_field :month, class: 'form-control', style: "width: 45px;" %>
+        </div>
+
+        <div class="inlineblockDiv">
+          <%= f.label :year, "Ano:" %>
+          <%= f.text_field :year, class: 'form-control', style: "width: 60px;" %>
+        </div>
       </div>
 
-      <div class="field">
-        <%= f.label :month, "Mês:" %>
-        <%= f.number_field :month, class: 'form-control' %>
-      </div>
-
-      <div class="field">
-        <%= f.label :year, "Ano:" %>
-        <%= f.number_field :year, class: 'form-control' %>
-      </div>
       <br>
     <%= f.submit "Cadastrar despesa", class: "btn btn-primary" %>
     <% end %>

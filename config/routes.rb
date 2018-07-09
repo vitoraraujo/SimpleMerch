@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
-  get    '/history', to: 'users#history'
+  get    '/geral', to: 'users#geral'
   get    '/signup',  to: 'users#new'
+  get    '/goods/searching', to: 'goods#searching'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
@@ -10,6 +11,8 @@ Rails.application.routes.draw do
   resources :goods
   resources :expenses
   resources :sales
+
+  post  'goods/search' => 'goods#search' 
 
   resources :users do
   	get :current, on: :collection # users#current

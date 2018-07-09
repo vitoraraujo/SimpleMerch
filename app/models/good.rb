@@ -4,11 +4,15 @@ class Good < ApplicationRecord
 
 	default_scope -> { order(created_at: :desc) }
 	validates :user_id, presence: true
-	validates :description, presence: true, uniqueness: { case_sensitive: false}
+	validates :description, presence: true, uniqueness: { case_sensitive: false}, uniqueness: false
 	validates :quantity, presence: true
 	validates :buy_price, presence: true
-	validates :buy_day, presence: true
-	validates :buy_month, presence: true
-	validates :buy_year, presence: true
+	validates :buy_day, presence: true, :inclusion => { :in => 1..31, :message => "Digite o dia entre 1-31" }
+	validates :buy_month, presence: true, :inclusion => { :in => 1..12, :message => "Digite o mês entre 1-12" }
+	validates :buy_year, presence: true, :inclusion => {:in => 2017..2019, :message => "Esse ano não é valido"}
+
 	validates :note, length: { maximum: 255 }
+
+
+
 end

@@ -1,10 +1,37 @@
 <% if @goods.any? %>
-	<h4>Mercadorias em estoque:</h4>
-	<%= render @goods %>
+	<div style="max-width: 500px; margin-left: auto; margin-right: auto; text-align: left;">
+		 <span style="font-size: 1.3em;">Mercadorias em estoque:</span>
+		 <span style="float: right;"><%= link_to "Busca", goods_searching_path %></span>	
+	</div>
+	<div  align="center" style="padding-bottom: 50px; " class="row">
+		<%= render @goods %>
+		<%= link_to "Nova entrada de mercadoria?", new_good_path %>
+	</div>
+
 <% else %>
-	Nenhuma mercadoria.. <%= link_to "Cadastrar nova mercadoria?", new_good_path %>
+	<section align="center">
+		<article style="text-align: center;">
+		Nenhuma mercadoria.. <%= link_to "Cadastrar entrada de uma mercadoria?", new_good_path %>
+		</article>
+	</section>
 <% end %>
-<% if @soldgoods.any? %>
-	<h4>Mercadorias fora de estoque:</h4>
-	<%= render @soldgoods %>
-<% end %>
+
+<div align="center" class="navbar navbar-fixed-bottom footer">
+	<div class="inlineblockDiv">
+		<div style="text-align: left;">
+			<span style="font-size: 1.3em; color: white;">Total</span>
+		</div>
+		<div>
+		<div class="inlineblockDiv" style="text-align: left;">
+			<span style="font-size: 1.1em;">Valor em estoque:</span>
+			<br>
+			<span style="font-size: 1.1em;">Quantidade em estoque:</span>
+		</div>
+		<div class="inlineblockDiv" style="text-align: right;">
+			<span style="color: green; font-size: 1.2em;"><%= number_to_currency(@stock_value,  :unit => "R$ ", :separator => ",", :delimiter => ".") %></span><br>
+			<span style="font-size: 1.2em;"><%= @stock_quantity %></span>
+		</div>
+		</div>
+	</div>
+</div>
+

@@ -1,7 +1,29 @@
-<p>
-	<%= good.description %>
-	<%= good.quantity %>
-	<% if good.quantity > 0 %>
-		<%= link_to "Vender", new_sale_path(:param => good.id) %>
-	<% end %>
-</p>
+	<div style="border: 1px solid #d9d9d9; max-width: 500px; min-width: 294px; height: 85px;margin-top: 1px;" >
+		<div style="max-width: 400px; border: 1px solid transparent; height: 85px;">
+			<div class="inlineblockDiv"style="width: 60px; height: 60px; float: left; border: 1px solid #d9d9d9; margin: 10px">
+			</div>
+				<b style="font-size: 1em"><%= good.description %></b>
+				<% @stock_value = @stock_value + (good.buy_price*good.quantity) %>
+				<% @stock_quantity = @stock_quantity + good.quantity %>
+
+				<br>
+			<div class="inlineblockDiv" style="text-align: left;">
+				<span style="font-size: 0.75em;">Preço de compra: <%= number_to_currency(good.buy_price,  :unit => "R$ ", :separator => ",", :delimiter => ".") %></span>
+				<% if good.kind == "" %>
+					<span style="font-size: 0.75em;">Tipo: -</span>
+				<% else %>
+					<span style="font-size: 0.75em;">Tipo: <%=good.kind %></span>
+				<% end %>
+				<br>
+				<span style="font-size: 0.75em;">Quantidade: <%= good.quantity %></span>
+				<span style="font-size: 0.75em;">Data: <%= good.buy_day %>/<%= good.buy_month %>/<%= good.buy_year %></span>
+				<br>
+				<% if good.buyed_from == "" %>
+					<span style="font-size: 0.75em;">Comprado de: -</span>
+				<% else %>
+					<span style="font-size: 0.75em;">Comprado de: <%=good.buyed_from %></span>
+				<% end %>
+				<span style="float: right; font-size: 1em;"><%= link_to "Vender", new_sale_path(:param => good.id) %></span>
+			</div>
+		</div>
+	</div>

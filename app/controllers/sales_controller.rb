@@ -27,13 +27,19 @@ class SalesController < ApplicationController
   def create
     @sale = current_user.sales.build(sale_params)
     @good = Good.find(sale_params[:good_id])
-    if @sale.save
-      quantity = @good.quantity - @sale.quantity
-      if @good.update(:quantity => quantity)
-        redirect_to goods_url
-      else
-      end
+    if @sale.quantity > @good.quantity
+      flash[:danger] = "Não venda além do que possui.."
+      redirect_to goods_url
     else
+      if @sale.save
+        quantity = @good.quantity - @sale.quantity
+        if @good.update(:quantity => quantity)
+          flash[:success] = "Venda realizada!"
+          redirect_to goods_url          
+        end
+      else
+        redirect_to goods_url
+      end
     end
   end
 

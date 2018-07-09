@@ -1,0 +1,36 @@
+<h5 align="center" style="color: gray;">Utilizando a busca, você terá as informações específicas que você procura! :)</h5> 
+
+<h2 align="center">Busca no estoque</h2>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+		<%= form_tag "/goods/search", autocomplete: 'off' do %>
+			<%= label :description, "Descrição ou Nome:" %>
+			<%= text_field_tag :description, params[:description], class: 'form-control' %>
+
+			<div style="width: auto;">
+				<div class="inlineblockDiv" style="margin-left: auto;">
+					<%= label :buy_day, "Dia:" %>
+					<%= text_field_tag :buy_day, params[:buy_day], class: 'form-control', style: "width: 45px;" %>
+				</div>
+
+				<div class="inlineblockDiv" style="margin: auto;">
+					<%= label :buy_month, "Mês:" %>
+					<%= text_field_tag :buy_month, params[:buy_month], class: 'form-control', style: "width: 45px;" %>
+				</div>
+
+				<div class="inlineblockDiv" style="margin: auto;">
+					<%= label :buy_year, "Ano:" %>
+					<%= text_field_tag :buy_year, params[:buy_year], class: 'form-control', style: "width: 60px;" %>
+				</div>
+			</div>
+
+			<%= label :buyed_from, "Fornecedor da mercadoria:" %>
+			<%= text_field_tag :buyed_from, params[:buyed_from], class: 'form-control'  %>
+
+			<%= label :kind, "Tipo de mercadoria:" %>
+			<%= text_field_tag :kind, params[:kind], class: 'form-control'  %>
+			<br>
+			<%= submit_tag "Buscar", class: "btn btn-primary buttons" %>
+		<% end %>
+  </div>
+</div>
