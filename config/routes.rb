@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   get    '/geral', to: 'users#geral'
   get    '/signup',  to: 'users#new'
-  get    '/goods/searching', to: 'goods#searching'
+  get    '/goods/buscando', to: 'goods#searching'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   resources :expenses
   resources :sales
 
-  post  'goods/search' => 'goods#search' 
+  post  'goods/busca' => 'goods#search' 
+  post 'geral/busca' => 'geral#search'
 
   resources :users do
   	get :current, on: :collection # users#current

@@ -2,6 +2,29 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user, only: [:current_user_menu, :show, :index, :edit, :update, :destroy]
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
+  
+  def search
+    @goods = Good.all
+    @sales = Sale.all
+    @expenses = Expense.all
+
+    @goods = @goods.where("description LIKE ?", "%#{params[:description]}%") if params[:description] != ""
+    @goods = @goods.where("buy_day LIKE ?", "%#{params[:day]}%") if params[:day] != ""
+    @goods = @goods.where("buy_month LIKE ?", "%#{params[:month]}%") if params[:month] != ""
+    @goods = @goods.where("buy_year LIKE ?", "%#{params[:year]}%") if params[:year] != ""
+    @goods = @goods.where("kind LIKE ?", "%#{params[:kind]}%") if params[:kind] != ""
+    @goods = @goods.where("buyed_from LIKE ?", "%#{params[:buyed_from]}%") if params[:buyed_from] != ""
+    
+
+    render template: 'geral' 
+  end
+
+  def geral
+    @goods = current_user.goods.all
+    @sales = current_user.sales.all;
+    @expenses = current_user.expenses.all;
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show
@@ -51,15 +74,6 @@ class UsersController < ApplicationController
   def current_user_menu
     redirect_to current_user
   end
-
-  def history_search
-    
-  end
-  def geral
-    @goods = current_user.goods.all
-    @sales = current_user.sales.all;
-    @expenses = current_user.expenses.all;
-  end
   
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -70,6 +84,10 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin)
+    end
+
+    def search_params
+      params.require(:search).permit(:description, :day, :month, :year, :expense_kind, :expense_reasen, :buyed_from, :sold_to)
     end
 
     def logged_in_user

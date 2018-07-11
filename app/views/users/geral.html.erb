@@ -1,95 +1,68 @@
-(em ordem de cadastro)
-<h1>Histórico de vendas:</h1>
+<ul style="margin-right: auto; font-size: 0.85em;" class="nav nav-tabs">
+  <li style="width: 60px;" class="active"><%= link_to "Busca", geral_path(:anchor => 'Busca'), data: { toggle: 'tab' } %></li>
+  <li style="width: 60px;"><%= link_to "Vendas",  geral_path(:anchor => 'Vendas'), data: { toggle: 'tab' } %></li>
+  <li style="width: 90px;"><%= link_to "Mercadorias",  geral_path(:anchor => 'Mercadorias'), data: { toggle: 'tab' } %></li>
+  <li style="width: 80px;"><%= link_to "Despesas",  geral_path(:anchor => 'Despesas'), data: { toggle: 'tab' } %></li>
+</ul>
 
-<table>
-  <thead>
-    <tr>
-      <th>Descrição</th>
-      <th>Quantidade</th>
-      <th>Preço(u)</th>
-      <th>Lucro</th>
-      <th>Vendido à</th>
-      <th>Dia</th>
-      <th>Mês</th>
-      <th>Ano</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="tab-content">
+  <div id="Busca" class="tab-pane fade in active">
+    <h3>Buscar por...</h3>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <%= form_tag "/geral/busca", autocomplete: 'off' do %>
+          <h4>Mercadoria:</h4>
+          <%= label :description, "Descrição ou Nome:" %>
+          <%= text_field_tag :description, params[:description], class: 'form-control' %>
 
-  <tbody>
-    <% @sales.each do |sale| %>
-      <tr>
-        <td><%= sale.good.description %></td>
-        <td><%= sale.quantity %></td>
-        <td><%= number_to_currency(sale.sell_price,  :unit => "R$ ", :separator => ",", :delimiter => ".") %></td>
-        <td><%= number_to_currency(sale.quantity*(sale.sell_price - sale.good.buy_price),  :unit => "R$ ", :separator => ",", :delimiter => ".") %>
-        <td><%= sale.sold_to %></td>
-        <td><%= sale.sell_day %></td>
-        <td><%= sale.sell_month %></td>
-        <td><%= sale.sell_year %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
+          <%= label :buyed_from, "Fornecedor da mercadoria:" %>
+          <%= text_field_tag :buyed_from, params[:buyed_from], class: 'form-control'  %>
+          
+          <%= label :sold_to, "Vendido a:" %>
+          <%= text_field_tag :sold_to, params[:sold_to], class: 'form-control'  %>
 
-<h1>Histórico de mercadorias:</h1>
+          <%= label :kind, "Tipo de mercadoria:" %>
+          <%= text_field_tag :kind, params[:kind], class: 'form-control'  %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Descrição</th>
-      <th>Preço(u)</th>
-      <th>Comprado de</th>
-      <th>Tipo</th>
-      <th>Dia</th>
-      <th>Mês</th>
-      <th>Ano</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+          <br>
+          <h4>Data:</h4>
+          <div style="width: auto;">
+            <div class="inlineblockDiv" style="margin-left: auto;">
+              <%= label :day, "Dia:" %>
+              <%= text_field_tag :day, params[:day], class: 'form-control', style: "width: 45px;" %>
+            </div>
 
-  <tbody>
-    <% @goods.each do |good| %>
-      <tr>
-        <td><%= good.description %></td>
-        <td><%= number_to_currency(good.buy_price,  :unit => "R$ ", :separator => ",", :delimiter => ".") %></td>
-        <td><%= good.buyed_from %></td>
-        <td><%= good.kind %></td>
-        <td><%= good.buy_day %></td>
-        <td><%= good.buy_month %></td>
-        <td><%= good.buy_year %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
+            <div class="inlineblockDiv" style="margin: auto;">
+              <%= label :month, "Mês:" %>
+              <%= text_field_tag :month, params[:month], class: 'form-control', style: "width: 45px;" %>
+            </div>
 
-<h1>Histórico de despesas:</h1>
+            <div class="inlineblockDiv" style="margin: auto;">
+              <%= label :year, "Ano:" %>
+              <%= text_field_tag :year, params[:year], class: 'form-control', style: "width: 60px;" %>
+            </div>
+          </div>
+          <br>
+          <h4>Despesa:</h4>
+            <%= label :expense_reason, "Motivo:" %>
+            <%= text_field_tag :expense_reason, params[:expense_reason], class: 'form-control'%>
 
-<table>
-  <thead>
-    <tr>
-      <th>Custo</th>
-      <th>Tipo</th>
-      <th>Motivo</th>
-      <th>Dia</th>
-      <th>Mês</th>
-      <th>Ano</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+            <%= label :expense_kind, "Tipo:" %>
+            <%= text_field_tag :expense_kind, params[:expense_kind], class: 'form-control' %>
+          <br>
 
-  <tbody>
-    <% @expenses.each do |expense| %>
-      <tr>
-        <td><%= number_to_currency(expense.cost,  :unit => "R$ ", :separator => ",", :delimiter => ".") %></td>
-        <td><%= expense.kind %></td>
-        <td><%= expense.reason %></td>
-        <td><%= expense.day %></td>
-        <td><%= expense.month %></td>
-        <td><%= expense.year %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <%= submit_tag "Buscar", class: "btn btn-primary buttons" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div id="Vendas" class="tab-pane fade">
+      <h3>Vendas </h3>
+  </div>
+  <div id="Mercadorias" class="tab-pane fade">
+      <h3>Entrada de Mercadorias </h3>
+  </div>
+  <div id="Despesas" class="tab-pane fade">
+      <h3>Despesas</h3>
+  </div>
+</div>
