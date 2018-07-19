@@ -1,0 +1,199 @@
+<ul style="font-size: 0.85em;" class="nav nav-tabs">
+  <li style="width: 60px;"><%= link_to "Busca", geral_path(:anchor => 'Busca'), data: { toggle: 'tab' } %></li>
+  <li style="width: 60px;" class="active"><%= link_to "Vendas", geral_path(:anchor => 'Vendas'), data: { toggle: 'tab' } %></li>
+  <li style="width: 90px;"><%= link_to "Mercadorias", geral_path(:anchor => 'Mercadorias'), data: { toggle: 'tab' } %></li>
+  <li style="width: 80px;"><%= link_to "Despesas", geral_path(:anchor => 'Despesas'), data: { toggle: 'tab' } %></li>
+</ul>
+
+<div class="tab-content" style="margin-top: 35px;">
+  <div align="center" id="Busca" class="tab-pane fade" style="margin-top: 40px; margin-bottom: 80px;">
+    <h4>Buscar por...</h4>
+    <div class="row formDiv">
+      <%= form_tag "/geral/busca", autocomplete: 'off' do %>
+        <h3>Mercadoria:</h3>
+        <div style="text-align: left;">
+        <%= label :description, "Descrição ou Nome:" %>
+        <%= text_field_tag :description, params[:description], class: 'form-control' %>
+
+        <%= label :buyed_from, "Fornecedor da mercadoria:" %>
+        <%= text_field_tag :buyed_from, params[:buyed_from], class: 'form-control'  %>
+        
+        <%= label :sold_to, "Vendido a:" %>
+        <%= text_field_tag :sold_to, params[:sold_to], class: 'form-control'  %>
+
+        <%= label :kind, "Tipo de mercadoria:" %>
+        <%= text_field_tag :kind, params[:kind], class: 'form-control'  %>
+        </div>
+        <br>
+        <h3>Data:</h3>
+        <div style="width: auto;">
+          <div class="inlineblockDiv" style="margin-left: auto;">
+            <%= label :day, "Dia:" %>
+            <%= text_field_tag :day, params[:day], class: 'form-control', style: "width: 45px;" %>
+          </div>
+
+          <div class="inlineblockDiv" style="margin: auto;">
+            <%= label :month, "Mês:" %>
+            <%= text_field_tag :month, params[:month], class: 'form-control', style: "width: 45px;" %>
+          </div>
+
+          <div class="inlineblockDiv" style="margin: auto;">
+            <%= label :year, "Ano:" %>
+            <%= text_field_tag :year, params[:year], class: 'form-control', style: "width: 60px;" %>
+          </div>
+        </div>
+        <br>
+        <h3>Despesa:</h3>
+        <div style="text-align: left; ">
+          <%= label :expense_kind, "Tipo:" %>
+          <%= text_field_tag :expense_kind, params[:expense_kind], class: 'form-control' %>
+          
+          <%= label :expense_reason, "Motivo:" %>
+          <%= text_field_tag :expense_reason, params[:expense_reason], class: 'form-control'%>
+        </div>
+        <br>
+        <%= submit_tag "Buscar", class: "btn btn-primary buttons" %>
+      <% end %>
+      <br>
+    </div>
+  </div>
+
+  <div id="Vendas" class="tab-pane fade in active" style=" margin-bottom: 80px;">
+    <% if @sales.any? %>
+      <% @sales.each do |sale| %>
+        <div align="center">
+          <div style="border: 1px solid #d9d9d9; max-width: 500px; min-width: 300px; height: 85px;margin-top: 1px;" >
+            <div style="max-width: 400px; border: 1px solid transparent; height: 85px;">
+              <div class="inlineblockDiv"style="width: 60px; height: 60px; float: left; border: 1px solid #d9d9d9; margin: 10px;">
+              </div>
+              <b style="font-size: 0.9em"><%= sale.good.description %></b>
+              <% @profit = @profit + (sale.quantity*(sale.sell_price - sale.good.buy_price)) %>
+              <br>
+              <div class="inlineblockDiv" style="text-align: left; margin-right: 8px;">
+                <span style="font-size: 0.75em; font-weight: bold;">Lucro: <%= number_to_currency(sale.quantity*(sale.sell_price - sale.good.buy_price),  :unit => "R$ ", :separator => ",", :delimiter => ".") %></span>
+                <br>
+                <span style="font-size: 0.75em;">Quantidade: <%= sale.quantity %></span>
+                <br>
+                <% if sale.sold_to == "" %>
+                  <span style="font-size: 0.75em;">Vendido a: -</span>
+                <% else %>
+                  <span style="font-size: 0.75em;">Vendido a: <%=sale.sold_to %></span>
+                <% end %>
+              </div>
+              <div class="inlineblockDiv" style="text-align: left;">
+                <span style="font-size: 0.75em;">Valor(und): <%= number_to_currency(sale.sell_price,  :unit => "R$ ", :separator => ",", :delimiter => ".") %></span>
+                <br>
+                <% if sale.good.kind == "" %>
+                  <span style="font-size: 0.75em;">Tipo: -</span>
+                <% else %>
+                  <span style="font-size: 0.75em;">Tipo: <%= sale.good.kind %></span>
+                <% end %>
+                <br>
+                <span style="font-size: 0.75em;">Data: <%= sale.sell_day %>/<%= sale.sell_month %>/<%= sale.sell_year %></span>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <h3>Nenhuma venda cadastrada ainda...</h3>
+    <% end %>
+  </div>
+
+  <div id="Mercadorias" class="tab-pane fade" style=" margin-bottom: 80px;">
+    <% if @goods.any? %>
+      <% @goods.each do |good| %>
+        <div align="center">
+          <div style="border: 1px solid #d9d9d9; max-width: 500px; min-width: 300px; height: 85px;margin-top: 1px;" >
+            <div style="max-width: 400px; border: 1px solid transparent; height: 85px;">
+              <div class="inlineblockDiv"style="width: 60px; height: 60px; float: left; border: 1px solid #d9d9d9; margin: 10px;">
+              </div>
+              <b style="font-size: 0.9em"><%= good.description %></b>
+
+              <br>
+              <div class="inlineblockDiv" style="text-align: left; margin-top: 12px; margin-left: 10px;">
+                <span style="font-size: 0.75em;">Preço(und): <%= number_to_currency(good.buy_price,  :unit => "R$ ", :separator => ",", :delimiter => ".") %></span>
+                <br>
+                <% if good.buyed_from == "" %>
+                  <span style="font-size: 0.75em;">Origem: -</span>
+                <% else %>
+                  <span style="font-size: 0.75em;">Origem: <%= good.buyed_from %></span>
+                <% end %>
+              </div>
+              <div class="inlineblockDiv" style="text-align: left;">
+                <% if good.kind == "" %>
+                  <span style="font-size: 0.75em;">Tipo: -</span>
+                <% else %>
+                  <span style="font-size: 0.75em;">Tipo: <%= good.kind %></span>
+                <% end %>
+                <br>
+                <span style="font-size: 0.75em;">Data: <%= good.buy_day %>/<%= good.buy_month %>/<%= good.buy_year %></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <h3>Nenhuma mercadoria cadastrada ainda... </h3>
+    <% end %>
+  </div>
+  
+  <div id="Despesas" class="tab-pane fade" style=" margin-bottom: 80px;">
+    <% if @expenses.any? %>
+      <% @expenses.each do |expense| %>
+        <div align="center">
+          <div style="border: 1px solid #d9d9d9; max-width: 500px; min-width: 300px; height: 85px;margin-top: 1px;" >
+            <div style="max-width: 400px; border: 1px solid transparent; height: 85px;">
+              <b style="font-size: 0.9em;"><%= expense.day %>/<%= expense.month %>/<%= expense.year %></b>
+              <% @cost = @cost + expense.cost %>
+              <br>
+              <div class="inlineblockDiv" style="text-align: left;">
+                <span style="font-size: 0.75em;">Custo: <%= number_to_currency(expense.cost,  :unit => "R$ ", :separator => ",", :delimiter => ".") %></span>
+                <br>
+                <% if expense.kind == "" %>
+                  <span style="font-size: 0.75em;">Tipo: -</span>
+                <% else %>
+                  <span style="font-size: 0.75em;">Tipo: <%= expense.kind %></span>
+                <% end %>
+                <br>
+                <% if expense.reason == "" %>
+                  <span style="font-size: 0.75em;">Tipo: -</span>
+                <% else %>
+                  <span style="font-size: 0.75em;">Tipo: <%= expense.reason %></span>
+                <% end %>
+                <br>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <h3>Nenhuma despesa cadastrada ainda...</h3>
+    <% end %>
+  </div>
+</div>
+
+<div align="center" class="navbar navbar-fixed-bottom footer">
+  <div class="inlineblockDiv">
+    <div style="text-align: left;">
+      <span style="font-size: 1.3em; color: white;">Total</span>
+    </div>
+    <div>
+    <div class="inlineblockDiv" style="text-align: left;">
+      <span style="font-size: 1.1em;">Lucro total:</span>
+      <br>
+      <% if @expenses.any? %>
+      <span style="font-size: 1.1em;">Despesa total:</span>
+      <% end %>
+    </div>
+    <div class="inlineblockDiv" style="text-align: right;">
+      <b style="color: green; font-size: 1.1em;"><%= number_to_currency(@profit,  :unit => "R$ ", :separator => ",", :delimiter => ".") %></b><br>
+      <% if @expenses.any? %>
+        <b style="color: red; font-size: 1.1em;"><%= number_to_currency(@cost,  :unit => "R$ ", :separator => ",", :delimiter => ".") %></b><br>
+      <% end %>
+    </div>
+    </div>
+  </div>
+</div>
+

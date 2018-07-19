@@ -1,9 +1,9 @@
 <% if @goods.any? %>
-	<div style="max-width: 500px; margin-left: auto; margin-right: auto; text-align: left;">
+	<div style="max-width: 500px; margin-left: auto; margin-right: auto; text-align: left; margin-right: 10px; margin-left: 10px;">
 		 <span style="font-size: 1.3em;">Mercadorias em estoque:</span>
 		 <span style="float: right;"><%= link_to "Busca", goods_buscando_path %></span>	
 	</div>
-	<div  align="center" style="padding-bottom: 50px; " class="row">
+	<div  align="center" style="padding-bottom: 50px; width: 100%; min-width: 320px;">
 		<%= render @goods %>
 		<%= link_to "Nova entrada de mercadoria?", new_good_path %>
 	</div>

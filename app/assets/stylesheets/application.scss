@@ -27,10 +27,8 @@ header {
   background: white;
   height: 100%;
 	padding-top: 55px;
-}
-.wrapper {
-  height: 100%;
   display: block;
+
 }
 .flashDiv {
 	height: 52px;
@@ -58,8 +56,29 @@ header {
   display: inline-block;
 }
 
+.menuButton{
+  display: inline-block;
+  background: #C0C0C0;
+  border-radius: 20px;
+  width: 110px;
+  height: 110px;
+  margin: 5px;
+  
+}
+
 .nav-tabs{
   height: 40px;
+  margin-top: -5px;
+  position: fixed;
+  background: white;
+  max-width: 500px;
+  width: 100%;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  z-index: 10000000000;
+  
 }
   
 .nav-tabs > li > a{
@@ -92,9 +111,20 @@ ul {
     padding: 0;
     /* Hide the default decorations for li items */
     list-style: none;
+
+    max-width: 500px;
+    left: 50%;
 }
 ul > li {
     /* Display the elements in one line */
     display: inline-block;
     
 }
+
+.formDiv{
+  margin-right: 10px;
+  margin-left: 10px; 
+  max-width: 325px;
+}
+
+/* DIVs de listagem */

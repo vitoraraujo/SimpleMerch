@@ -30,7 +30,7 @@ class ExpensesController < ApplicationController
       redirect_to root_path
     else
       flash[:danger] = "Ops.. Algo não está de acordo!"
-      reder 'new'
+      render 'new'
     end
   end
 

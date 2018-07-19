@@ -6,11 +6,11 @@ class GoodsController < ApplicationController
   end
 
   def search
-    @goods = Good.where("quantity > ?", 0)
+    @goods = current_user.goods.where("quantity > ?", 0)
     @goods = @goods.where("description LIKE ?", "%#{params[:description]}%") if params[:description] != ""
-    @goods = @goods.where("buy_day LIKE ?", "%#{params[:buy_day]}%") if params[:buy_day] != ""
-    @goods = @goods.where("buy_month LIKE ?", "%#{params[:buy_month]}%") if params[:buy_month] != ""
-    @goods = @goods.where("buy_year LIKE ?", "%#{params[:buy_year]}%") if params[:buy_year] != ""
+    @goods = @goods.where("buy_day = ?", params[:buy_day]) if params[:buy_day] != ""
+    @goods = @goods.where("buy_month = ?", params[:buy_month]) if params[:buy_month] != ""
+    @goods = @goods.where("buy_year = ?", params[:buy_year]) if params[:buy_year] != ""
     @goods = @goods.where("kind LIKE ?", "%#{params[:kind]}%") if params[:kind] != ""
     @goods = @goods.where("buyed_from LIKE ?", "%#{params[:buyed_from]}%") if params[:buyed_from] != ""
     

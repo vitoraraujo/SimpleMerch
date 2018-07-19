@@ -1,32 +1,16 @@
-<h2 align="center">Entrada de Mercadoria</h2>
+<h3 align="center">Entrada de Mercadoria</h3>
 
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <%= form_for @good, html: { autocomplete: "off" } do |f| %>
-      <div class="field">
+<div class="formDiv row">
+  <%= form_for @good, html: { autocomplete: "off" } do |f| %>
+    <div style="text-align: left;">
       <%= f.label :description, "Descrição ou Nome:" %>
       <%= f.text_field :description, class: 'form-control' %>
-      </div>
 
-      <div class="field">
       <%= f.label :quantity, "Quantidade:" %>
       <%= f.number_field :quantity, class: 'form-control' %>
-      </div>
 
-      <div class="field">
       <%= f.label :buy_price, "Preço de compra por unidade:" %>
       <%= f.text_field :buy_price, step: 0.01, class: 'form-control' %>
-      </div>
-
-      <div class="field">
-      <%= f.label :kind, "Tipo de mercadoria: (Opcional)" %>
-      <%= f.text_field :kind, class: 'form-control' %>
-      </div>
-
-      <div class="field">
-      <%= f.label :buyed_from, "Fornecedor da mercadoria: (Opcional)" %>
-      <%= f.text_field :buyed_from, class: 'form-control' %>
-      </div>
 
       <div style="width: auto;">
         <div class="inlineblockDiv">
@@ -45,15 +29,14 @@
         </div>
       </div>
 
-      <div class="field">
-      <%= f.label :note, "Anotações" %>
-      <%= f.text_field :note, class: 'form-control' %>
-      </div>
-      <br>
-      <%= f.submit "Cadastrar mercadoria", class: "btn btn-primary" %>
-    <% end %>
-  </div>
+      <%= f.label :kind, "Tipo de mercadoria: (Opcional)" %>
+      <%= f.text_field :kind, class: 'form-control' %>
+
+      <%= f.label :buyed_from, "Fornecedor da mercadoria: (Opcional)" %>
+      <%= f.text_field :buyed_from, class: 'form-control' %>
+    </div>
+    <br>
+    <%= f.submit "Cadastrar mercadoria", class: "btn btn-primary" %>
+  <% end %>
 </div>
-<div style="text-align: right;">
-<%= link_to "Back", :back %>
-</div>
+<%= link_to "Voltar", :back %>

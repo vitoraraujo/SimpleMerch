@@ -1,44 +1,37 @@
-<h2 align="center">Despesa:</h2>
+<h3 align="center">Despesa:</h3>
 
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <%= form_for @expense, html: { autocomplete: "off" } do |f| %>
-        
-      <div class="field">
-        <%= f.label :cost, "Custo:" %>
-        <%= f.text_field :cost, step: 0.01, class: 'form-control'%>
+<div class="formDiv row">
+  <%= form_for @expense, html: { autocomplete: "off" } do |f| %> 
+    <div style="text-align: left;">
+      <%= f.label :cost, "Custo:" %>
+      <%= f.text_field :cost, step: 0.01, class: 'form-control'%>
+
+      <%= f.label :kind, "Tipo de custo: (Opcional)" %>
+      <%= f.text_field :kind, class: 'form-control' %>
+
+      <%= f.label :reason, "Motivo: (Opcional)" %>
+      <%= f.text_field :reason, class: 'form-control' %>
+    </div>
+    <div style="width: auto;">
+      <div class="inlineblockDiv">
+        <%= f.label :day, "Dia:" %>
+        <%= f.text_field :day, class: 'form-control', style: "width: 45px;" %>
       </div>
 
-      <div class="field">
-        <%= f.label :kind, "Tipo de custo: (Opcional)" %>
-        <%= f.text_field :kind, class: 'form-control' %>
+      <div class="inlineblockDiv">
+        <%= f.label :month, "Mês:" %>
+        <%= f.text_field :month, class: 'form-control', style: "width: 45px;" %>
       </div>
 
-      <div class="field">
-        <%= f.label :reason, "Motivo: (Opcional)" %>
-        <%= f.text_field :reason, class: 'form-control' %>
+      <div class="inlineblockDiv">
+        <%= f.label :year, "Ano:" %>
+        <%= f.text_field :year, class: 'form-control', style: "width: 60px;" %>
       </div>
-      <div style="width: auto;">
-        <div class="inlineblockDiv">
-          <%= f.label :day, "Dia:" %>
-          <%= f.text_field :day, class: 'form-control', style: "width: 45px;" %>
-        </div>
+    </div>
 
-        <div class="inlineblockDiv">
-          <%= f.label :month, "Mês:" %>
-          <%= f.text_field :month, class: 'form-control', style: "width: 45px;" %>
-        </div>
-
-        <div class="inlineblockDiv">
-          <%= f.label :year, "Ano:" %>
-          <%= f.text_field :year, class: 'form-control', style: "width: 60px;" %>
-        </div>
-      </div>
-
-      <br>
-    <%= f.submit "Cadastrar despesa", class: "btn btn-primary" %>
-    <% end %>
-  </div>
+    <br>
+  <%= f.submit "Cadastrar despesa", class: "btn btn-primary" %>
+  <% end %>
 </div>
 
 <h4 align="center"> Por que não preencher todas as informações da despesa? Irá facilitar sua busca posteriormente ;) </h4>

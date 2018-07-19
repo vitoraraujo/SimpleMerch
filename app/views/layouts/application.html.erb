@@ -9,19 +9,16 @@
   </head>
 
   <body>
-  
     <%= render 'layouts/header' %>
-    <div class="wrapper">
-    <div class="col-md-8 col-md-offset-2 main">
+    <div align="center" class="main">
       <% if false %>
-      <div class="flashDiv">
-        <% flash.each do |message_type, message| %>
-          <div style="text-align: center" class="alert alert-<%= message_type %>"><%= message %></div>
-        <% end %>
-      </div>
+        <div class="flashDiv">
+          <% flash.each do |message_type, message| %>
+            <div style="text-align: center" class="alert alert-<%= message_type %>"><%= message %></div>
+          <% end %>
+        </div>
       <% end %>
       <%= yield %>
     </div>
-  </div>
   </body>
 </html>

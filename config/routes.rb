@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
-  get    '/geral', to: 'users#geral'
+  get    '/ajuda',   to: 'help#help'
+  get    '/geral',   to: 'general#general'
   get    '/signup',  to: 'users#new'
   get    '/goods/buscando', to: 'goods#searching'
   get    '/login',   to: 'sessions#new'
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
   resources :sales
 
   post  'goods/busca' => 'goods#search' 
-  post 'geral/busca' => 'geral#search'
+  post 'geral/busca' => 'general#search'
 
   resources :users do
   	get :current, on: :collection # users#current
