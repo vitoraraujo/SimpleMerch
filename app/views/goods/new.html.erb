@@ -28,7 +28,7 @@
           <%= f.text_field :buy_year, class: 'form-control', style: "width: 60px;" %>
         </div>
       </div>
-
+      
       <%= f.label :kind, "Tipo de mercadoria: (Opcional)" %>
       <%= f.text_field :kind, class: 'form-control' %>
 
@@ -39,4 +39,5 @@
     <%= f.submit "Cadastrar mercadoria", class: "btn btn-primary" %>
   <% end %>
 </div>
+<br>
 <%= link_to "Voltar", :back %>
