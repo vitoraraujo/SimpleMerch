@@ -16,3 +16,14 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+
+
+function openNav() {
+  nav = document.getElementById("Sidenav").style.width;
+  if(nav == "120px"){
+  	document.getElementById("Sidenav").style.width = "0";
+  }
+  else {
+  	document.getElementById("Sidenav").style.width = "120px";
+  }
+}

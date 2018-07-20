@@ -2,7 +2,9 @@
 	<div class="headerDiv">
 	<% if logged_in? %>
 		<div class="header-hamburger">
-			<%= image_tag "hamburger.png" %>
+			<span  onclick="openNav()">
+  				<%= image_tag "hamburger.png" %>
+			</span>
 		</div>
 		<div class="header-logo">
 			<b>Simple Merch</b>
@@ -18,4 +20,10 @@
 		</div>		
 	<% end %>
 </header>
-
+<% if logged_in? %>
+	<div id="Sidenav" class="sidenav">
+		<span><%= link_to "Usuário", edit_user_path(current_user) %></span>
+		<span><%= link_to "Contato" %>
+	  <span style="border-top: 2px solid white; margin-top: 5px;"><%= link_to "Sair", logout_path, method: :delete %></span>
+	</div>
+<% end %>
