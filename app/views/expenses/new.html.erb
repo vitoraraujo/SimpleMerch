@@ -6,12 +6,6 @@
       <%= f.label :cost, "Custo:" %>
       <%= f.text_field :cost, step: 0.01, class: 'form-control'%>
 
-      <%= f.label :kind, "Tipo de custo: (Opcional)" %>
-      <%= f.text_field :kind, class: 'form-control' %>
-
-      <%= f.label :reason, "Motivo: (Opcional)" %>
-      <%= f.text_field :reason, class: 'form-control' %>
-    </div>
     <div style="width: auto;">
       <div class="inlineblockDiv">
         <%= f.label :day, "Dia:" %>
@@ -29,6 +23,12 @@
       </div>
     </div>
 
+      <%= f.label :kind, "Tipo de custo: (Opcional)" %>
+      <%= f.text_field :kind, class: 'form-control' %>
+
+      <%= f.label :reason, "Motivo: (Opcional)" %>
+      <%= f.text_field :reason, class: 'form-control' %>
+    </div>
     <br>
   <%= f.submit "Cadastrar despesa", class: "btn btn-primary" %>
   <% end %>

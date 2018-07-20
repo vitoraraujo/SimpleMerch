@@ -8,6 +8,30 @@ header {
   height: 50px; 
   background: #C0C0C0;
 }
+.headerDiv {
+  max-width: 500px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.header-logo {
+  display: inline-block;
+  font-size: 1.6em;
+  color: white;
+  position: absolute;
+  margin-top: 8px;
+}
+
+.header-hamburger {
+  display: inline-block;
+  margin: 10px;
+}
+
+.header-menu {
+  display: inline-block;
+  margin: 10px;
+  float: right;
+}
 
 .footer {
   z-index: 10000000000;
@@ -34,26 +58,18 @@ header {
 	height: 52px;
 }
 
-.simplemerch-icon {
-	display: inline-block;
-    width: 80px;
-    height: 50px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.header-menu {
-  display: inline-block;
-	margin-right: 15%;
-}
-
-.header-logout {
-  display: inline-block;
-	margin-left: 15%;
-}
-
 .inlineblockDiv{
   display: inline-block;
+}
+
+/* Menu principal*/
+
+.menuDiv {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -122px;
+  margin-top: -160px;
 }
 
 .menuButton{
@@ -63,8 +79,9 @@ header {
   width: 110px;
   height: 110px;
   margin: 5px;
-  
 }
+
+/* Bootstrap Tabs */
 
 .nav-tabs{
   height: 40px;
@@ -78,18 +95,15 @@ header {
   margin-right: auto;
   margin-left: auto;
   z-index: 10000000000;
-  
 }
   
 .nav-tabs > li > a{
   padding: 10px 10px;
   color: black;
-
 }
  
 .nav-tabs > li > a:hover{
   background-color: #EEEEEE !important;
-    
   color: black;
 }
  
@@ -118,7 +132,6 @@ ul {
 ul > li {
     /* Display the elements in one line */
     display: inline-block;
-    
 }
 
 .formDiv{
@@ -126,5 +139,3 @@ ul > li {
   margin-left: 10px; 
   max-width: 325px;
 }
-
-/* DIVs de listagem */

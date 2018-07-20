@@ -1,21 +1,23 @@
-<header >
-    <div align="center" class="header col-xs-12">
-		<% if logged_in? %>
+<header>
+	<div class="headerDiv">
+	<% if logged_in? %>
+		<div class="header-hamburger">
+			<%= image_tag "hamburger.png" %>
+		</div>
+		<div class="header-logo">
+			<b>Simple Merch</b>
+		</div>	
+		<%= link_to current_user do %>
 			<div class="header-menu">
-				<%= link_to current_user do %>
-					<%= image_tag "menu-icon.png" %>
-				<% end %>
+				<%= image_tag "menu-icon.png" %>
 			</div>
-			<div class="simplemerch-icon" style="margin-left: 10px;">
-				<%= image_tag "simplemerch-icon.png" %>
-			</div>
-			<div class="header-logout">
-				<%= button_to "Sair", logout_path, method: :delete, class: "btn btn-sm btn-hover btn-default" %>	
-			</div>
-		<% else %>
-			<div class="simplemerch-icon">
-				<%= image_tag "simplemerch-icon.png" %>
-			</div>			
 		<% end %>
-	</div>
+	<% else %>
+		<div align="center" style="margin-top: 8px;">
+		<div class="header-logo">
+			<b>Simple Merch</b>
+		</div>
+		</div>		
+	<% end %>
 </header>
+

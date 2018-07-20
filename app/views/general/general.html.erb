@@ -7,6 +7,7 @@
 
 <div class="tab-content" style="margin-top: 35px;">
   <div align="center" id="Busca" class="tab-pane fade" style="margin-top: 40px; margin-bottom: 80px;">
+    <h5 align="center" style="color: gray;">Preencha apenas as informações que deseje filtrar :)</h5> 
     <h4>Buscar por...</h4>
     <div class="row formDiv">
       <%= form_tag "/geral/busca", autocomplete: 'off' do %>
@@ -97,7 +98,11 @@
         </div>
       <% end %>
     <% else %>
-      <h3>Nenhuma venda cadastrada ainda...</h3>
+      <section align="center">
+        <article style="text-align: center; margin: 10px; margin-top: 80px;">
+          <h3>Nenhuma venda cadastrada ainda...</h3>
+        </article>
+      </section>
     <% end %>
   </div>
 
@@ -135,7 +140,11 @@
         </div>
       <% end %>
     <% else %>
-      <h3>Nenhuma mercadoria cadastrada ainda... </h3>
+      <section align="center">
+        <article style="text-align: center; margin: 10px; margin-top: 80px;;">
+         <h3>Nenhuma mercadoria cadastrada ainda... </h3>
+        </article>
+      </section>
     <% end %>
   </div>
   
@@ -169,7 +178,11 @@
         </div>
       <% end %>
     <% else %>
-      <h3>Nenhuma despesa cadastrada ainda...</h3>
+      <section align="center">
+        <article style="text-align: center; margin: 20px; margin-top: 80px;">
+          <h3>Nenhuma despesa cadastrada ainda...</h3>
+        </article>
+      </section>
     <% end %>
   </div>
 </div>

@@ -1,72 +1,72 @@
+<div>
+	<div class="menuDiv">
+		<div align="center" >
+			<%= link_to geral_path do %>
+				<div class="menuButton">
+					<div class="inlineblockDiv" style="margin: 20px;">
+						<%= image_tag "geral.png" %>
+						<section style="color: white;">
+							<b>Geral</b>
+						</section>
+					</div>
+				</div>
+			<% end %>
+			<%= link_to goods_path do %>
+				<div class="menuButton " >
+					<div class="inlineblockDiv" style="margin: 20px;">
+						<%= image_tag "estoque.png" %>
+						<section style="color: white;">
+							<b>Estoque</b>
+						</section>
+					</div>
+				</div>
+			<% end %>
+		</div>
 
-<div style="margin-top: 3%;">
-	<div align="center" >
-		<%= link_to geral_path do %>
-			<div class="menuButton">
-				<div class="inlineblockDiv" style="margin: 20px;">
-					<%= image_tag "geral.png" %>
-					<section style="color: white;">
-						<b>Geral</b>
-					</section>
+		<div align="center">
+			<%= link_to goods_path do %>
+				<div class="menuButton">
+					<div class="inlineblockDiv" style="margin: 20px;">
+						<%= image_tag "venda.png" %>
+						<section style="color: white;">
+							<b>Venda</b>
+						</section>
+					</div>
 				</div>
-			</div>
-		<% end %>
-		<%= link_to goods_path do %>
-			<div class="menuButton " >
-				<div class="inlineblockDiv" style="margin: 20px;">
-					<%= image_tag "estoque.png" %>
-					<section style="color: white;">
-						<b>Estoque</b>
-					</section>
+			<% end %>
+			<%= link_to new_expense_path do %>
+				<div class="menuButton">
+					<div class="inlineblockDiv" style="margin: 20px;">
+						<%= image_tag "despesa.png" %>
+						<section style="color: white;">
+							<b>Despesa</b>
+						</section>
+					</div>
 				</div>
-			</div>
-		<% end %>
-	</div>
+			<% end %>
+		</div>	
 
-	<div align="center">
-		<%= link_to goods_path do %>
-			<div class="menuButton">
-				<div class="inlineblockDiv" style="margin: 20px;">
-					<%= image_tag "venda.png" %>
-					<section style="color: white;">
-						<b>Venda</b>
-					</section>
+		<div align="center">
+			<%= link_to new_good_path do %>
+				<div class="menuButton">
+					<div class="inlineblockDiv" >
+						<%= image_tag "mercadoria.png" %>
+						<section style="color: white;">
+							<b>Entrada de Mercadoria</b>
+						</section>
+					</div>
+				</div>	
+			<% end %>
+			<%= link_to ajuda_path do %>
+				<div class="menuButton">
+					<div class="inlineblockDiv" style="margin: 20px;">
+						<%= image_tag "ajuda.png" %>
+						<section style="color: white;">
+							<b>Ajuda</b>
+						</section>
+					</div>
 				</div>
-			</div>
-		<% end %>
-		<%= link_to new_expense_path do %>
-			<div class="menuButton">
-				<div class="inlineblockDiv" style="margin: 20px;">
-					<%= image_tag "despesa.png" %>
-					<section style="color: white;">
-						<b>Despesa</b>
-					</section>
-				</div>
-			</div>
-		<% end %>
-	</div>	
-
-	<div align="center">
-		<%= link_to new_good_path do %>
-			<div class="menuButton">
-				<div class="inlineblockDiv" >
-					<%= image_tag "mercadoria.png" %>
-					<section style="color: white;">
-						<b>Entrada de Mercadoria</b>
-					</section>
-				</div>
-			</div>	
-		<% end %>
-		<%= link_to ajuda_path do %>
-			<div class="menuButton">
-				<div class="inlineblockDiv" style="margin: 20px;">
-					<%= image_tag "ajuda.png" %>
-					<section style="color: white;">
-						<b>Ajuda</b>
-					</section>
-				</div>
-			</div>
-		<% end %>
+			<% end %>
+		</div>
 	</div>
 </div>
-
