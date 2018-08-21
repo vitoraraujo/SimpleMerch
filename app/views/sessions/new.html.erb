@@ -1,6 +1,6 @@
-<h1 align="center">Logue-se!</h1>
 
-<div class="formDiv row">
+<div class="formDiv row" style="margin-top: 0px;">
+  <h3> Bem-vindo!</h3>
   <%= form_for(:session, url: login_path) do |f| %>
     <div style="text-align: left;">  
       <%= f.label :email ,"E-mail:" %>
@@ -8,10 +8,11 @@
 
       <%= f.label :password, "Senha:" %>
       <%= f.password_field :password, class: 'form-control' %>
-      <p>Novo por aqui? <%= link_to "Crie sua conta!", signup_path %></p>
+      <br>
+      <h4>Novo por aqui? <%= link_to "Crie sua conta!", signup_path %></h4>
     </div>
     <br>
-    <%= f.submit "Log in", class: "btn btn-primary" %>
+    <%= f.submit "Login", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

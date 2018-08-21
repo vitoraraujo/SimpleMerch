@@ -7,7 +7,7 @@
 
 <div class="tab-content" style="margin-top: 35px;">
   <div align="center" id="Busca" class="tab-pane fade" style="margin-top: 40px; margin-bottom: 80px;">
-    <h5 align="center" style="color: gray;">Preencha apenas as informações que deseje filtrar :)</h5> 
+    <h5 align="center" style="color: gray;">Preencha apenas as informações que deseje filtrar </h5> 
     <h4>Buscar por...</h4>
     <div class="row formDiv">
       <%= form_tag "/geral/busca", autocomplete: 'off' do %>
@@ -120,17 +120,17 @@
               <div class="inlineblockDiv" style="text-align: left; margin-top: 12px; margin-left: 10px;">
                 <span style="font-size: 0.75em;">Preço(und): <%= number_to_currency(good.buy_price,  :unit => "R$ ", :separator => ",", :delimiter => ".") %></span>
                 <br>
-                <% if good.buyed_from == "" %>
-                  <span style="font-size: 0.75em;">Origem: -</span>
-                <% else %>
-                  <span style="font-size: 0.75em;">Origem: <%= good.buyed_from %></span>
-                <% end %>
-              </div>
-              <div class="inlineblockDiv" style="text-align: left;">
                 <% if good.kind == "" %>
                   <span style="font-size: 0.75em;">Tipo: -</span>
                 <% else %>
                   <span style="font-size: 0.75em;">Tipo: <%= good.kind %></span>
+                <% end %>
+              </div>
+              <div class="inlineblockDiv" style="text-align: left;">
+                <% if good.buyed_from == "" %>
+                  <span style="font-size: 0.75em;">Origem: -</span>
+                <% else %>
+                  <span style="font-size: 0.75em;">Origem: <%= good.buyed_from %></span>
                 <% end %>
                 <br>
                 <span style="font-size: 0.75em;">Data: <%= good.buy_day %>/<%= good.buy_month %>/<%= good.buy_year %></span>
@@ -194,10 +194,10 @@
     </div>
     <div>
     <div class="inlineblockDiv" style="text-align: left;">
-      <span style="font-size: 1.1em;">Lucro total:</span>
+      <b style="font-size: 1.1em;">Lucro total:</b>
       <br>
       <% if @expenses.any? %>
-      <span style="font-size: 1.1em;">Despesa total:</span>
+      <b style="font-size: 1.1em;">Despesa total:</b>
       <% end %>
     </div>
     <div class="inlineblockDiv" style="text-align: right;">

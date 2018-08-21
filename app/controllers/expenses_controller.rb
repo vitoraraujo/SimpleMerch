@@ -24,6 +24,10 @@ class ExpensesController < ApplicationController
   # POST /expenses
   # POST /expenses.json
   def create
+    if expense_params[:year].empty?
+      expense_params[:year] = 2018
+    end
+    
     @expense = current_user.expenses.build(expense_params)
     if @expense.save
       flash[:success] = "Despesa cadastrada"

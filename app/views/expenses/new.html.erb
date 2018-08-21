@@ -3,8 +3,8 @@
 <div class="formDiv row">
   <%= form_for @expense, html: { autocomplete: "off" } do |f| %> 
     <div style="text-align: left;">
-      <%= f.label :cost, "Custo:" %>
-      <%= f.text_field :cost, step: 0.01, class: 'form-control'%>
+      <%= f.label :cost, "Custo: (R$)" %>
+      <%= f.text_field :cost, step: 0.01, :placeholder => 'ex.: 12,34', class: 'form-control'%>
 
     <div style="width: auto;">
       <div class="inlineblockDiv">
@@ -19,20 +19,19 @@
 
       <div class="inlineblockDiv">
         <%= f.label :year, "Ano:" %>
-        <%= f.text_field :year, class: 'form-control', style: "width: 60px;" %>
+        <%= f.text_field :year,:placeholder => '2018', class: 'form-control', style: "width: 60px;" %>
       </div>
     </div>
 
       <%= f.label :kind, "Tipo de custo: (Opcional)" %>
-      <%= f.text_field :kind, class: 'form-control' %>
+      <%= f.text_field :kind, :placeholder => 'ex.: Transporte, Frete, Reparo..', class: 'form-control' %>
 
       <%= f.label :reason, "Motivo: (Opcional)" %>
-      <%= f.text_field :reason, class: 'form-control' %>
+      <%= f.text_field :reason, :placeholder => 'ex.: Ir ao fornecedor..', class: 'form-control' %>
     </div>
     <br>
   <%= f.submit "Cadastrar despesa", class: "btn btn-primary" %>
   <% end %>
 </div>
 
-<h4 align="center"> Por que não preencher todas as informações da despesa? Irá facilitar sua organização posteriormente ;) </h4>
 <%= link_to "Voltar", :back %>

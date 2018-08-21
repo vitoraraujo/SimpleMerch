@@ -25,8 +25,15 @@ class SalesController < ApplicationController
   # POST /sales
   # POST /sales.json
   def create
+    if sale_params[:sell_year] == "" || sale_params[:sell_year].nil?
+      sale_params[:sell_year] = 2018
+    end
+
     @sale = current_user.sales.build(sale_params)
     @good = Good.find(sale_params[:good_id])
+    if sale_params[:sell_year] == ""
+      sale_params[:sell_year] = 2018
+    end
     if @sale.quantity > @good.quantity
       flash[:danger] = "Não venda além do que possui.."
       redirect_to goods_url
