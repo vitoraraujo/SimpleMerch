@@ -3,7 +3,7 @@
 	<% if logged_in? %>
 		<div class="header-hamburger">
 			<span  onclick="openNav()">
-  				<%= image_tag "hamburger.png" %>
+  				<%= image_tag "menu_icon.png" %>
 			</span>
 		</div>
 		<div class="header-logo">
@@ -11,7 +11,7 @@
 		</div>	
 		<%= link_to current_user do %>
 			<div class="header-menu">
-				<%= image_tag "menu-icon.png" %>
+				<%= image_tag "home_icon.png" %>
 			</div>
 		<% end %>
 	<% else %>

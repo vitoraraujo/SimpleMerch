@@ -18,15 +18,15 @@
 				</div>
 				<div class="inlineblockDiv" style="margin: auto;">
 					<%= label :buy_year, "Ano:" %>
-					<%= text_field_tag :buy_year, params[:buy_year], class: 'form-control', style: "width: 60px;" %>
+					<%= text_field_tag :buy_year, params[:buy_year], :placeholder => '2018', class: 'form-control', style: "width: 60px;" %>
 				</div>
 			</div>
 			
 			<%= label :buyed_from, "Fornecedor da mercadoria:" %>
-			<%= text_field_tag :buyed_from, params[:buyed_from], class: 'form-control' %>
+			<%= text_field_tag :buyed_from, params[:buyed_from], :placeholder => 'ex.: Vendedor, Loja, Leilão..', class: 'form-control' %>
 
 			<%= label :kind, "Tipo de mercadoria:" %>
-			<%= text_field_tag :kind, params[:kind], class: 'form-control' %>
+			<%= text_field_tag :kind, params[:kind], :placeholder => 'ex.: Cristal, Quadro, Cosmético..', class: 'form-control' %>
 		</div>
 		<br>
 		<%= submit_tag "Buscar", class: "btn btn-primary buttons" %>

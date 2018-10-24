@@ -1,6 +1,6 @@
 class GoodsController < ApplicationController
   before_action :set_good, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:show, :new, :edit, :update, :destroy]  
 
   def searching
   end
