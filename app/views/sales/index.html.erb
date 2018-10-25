@@ -1,0 +1,27 @@
+<div style="max-width: 500px; margin-left: auto; margin-right: auto; text-align: left; margin-right: 10px; margin-left: 10px;">
+	<span style="font-size: 1.3em;">Selecione para vender:</span>
+	<span style="float: right;"><%= link_to "Busca", goods_buscando_path %></span>	
+</div>
+<div  align="center" style="padding-bottom: 50px; width: 100%; min-width: 320px; margin-bottom: 40px">
+	<% @goods.each do |good| %>
+		<%= link_to new_sale_path(:param => good.id) do %>
+			<div class="divStock"style="border: 1px solid #d9d9d9; max-width: 500px; min-width: 294px; height: 85px;margin-top: 1px; text-align: left;" >
+				<div style="max-width: 400px; border: 1px solid transparent; height: 85px; white-space: nowrap;" >
+					<div class="inlineblockDiv" style="width: 60px; height: 60px; float: left; border: 1px solid #d9d9d9; margin: 10px; margin-right: 5%">
+					</div>
+
+					<div class="inlineblockDiv" style="text-align: left; white-space: nowrap;">
+						<div style="margin-top: 15px;">
+							<b style="font-size: 1.2em;"> <%= good.description %></b>
+							<br>
+							<article style="margin-top: 2px;">
+								<span style=" font-size: 0.85em; color: gray; margin-right: 15px;">Quantidade: <%= good.quantity %></span>
+								<span style=" font-size: 0.85em; color: gray;">Data: <%= good.buy_day %>/<%= good.buy_month %> / <%= good.buy_year %></span>
+							</article>
+						</div>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	<% end %>
+</div>

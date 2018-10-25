@@ -4,7 +4,7 @@ class SalesController < ApplicationController
   # GET /sales
   # GET /sales.json
   def index
-    @sales = Sale.all
+    @goods = current_user.goods.where("quantity > ?", 0)    
   end
 
   # GET /sales/1
@@ -43,10 +43,10 @@ class SalesController < ApplicationController
         quantity = @good.quantity - @sale.quantity
         if @good.update(:quantity => quantity)
           flash[:success] = "Venda realizada!"
-          redirect_to goods_url          
+          redirect_to sales_url          
         end
       else
-        redirect_to goods_url
+        redirect_to sales_url
       end
     end
   end
