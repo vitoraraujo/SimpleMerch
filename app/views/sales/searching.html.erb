@@ -1,0 +1,33 @@
+<h5 align="center" style="color: gray;">Preencha apenas as informações que deseje filtrar </h5> 
+
+<h2 align="center">Busca para venda</h2>
+<div class="formDiv row">
+	<%= form_tag "/sales/busca", autocomplete: 'off' do %>
+		<div style="text-align: left;">
+			<%= label :description, "Descrição ou Nome:" %>
+			<%= text_field_tag :description, params[:description], class: 'form-control' %>
+
+			<div style="width: auto;">
+				<div class="inlineblockDiv" style="margin-left: auto;">
+					<%= label :buy_day, "Dia:" %>
+					<%= text_field_tag :buy_day, params[:buy_day], class: 'form-control', style: "width: 45px;" %>
+				</div>
+				<div class="inlineblockDiv" style="margin: auto;">
+					<%= label :buy_month, "Mês:" %>
+					<%= text_field_tag :buy_month, params[:buy_month], class: 'form-control', style: "width: 45px;" %>
+				</div>
+				<div class="inlineblockDiv" style="margin: auto;">
+					<%= label :buy_year, "Ano:" %>
+					<%= text_field_tag :buy_year, params[:buy_year], :placeholder => '2018', class: 'form-control', style: "width: 60px;" %>
+				</div>
+			</div>
+
+			<%= label :kind, "Tipo de mercadoria:" %>
+			<%= text_field_tag :kind, params[:kind], :placeholder => 'ex.: Cristal, Quadro, Cosmético..', class: 'form-control' %>
+		</div>
+		<br>
+		<%= submit_tag "Buscar", class: "btn btn-primary buttons" %>
+	<% end %>
+</div>
+<br>
+<%= link_to "Voltar", :back %>

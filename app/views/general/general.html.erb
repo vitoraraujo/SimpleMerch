@@ -192,20 +192,24 @@
     <div style="text-align: left;">
       <span style="font-size: 1.3em; color: white;">Total</span>
     </div>
-    <div>
     <div class="inlineblockDiv" style="text-align: left;">
       <b style="font-size: 1.1em;">Lucro:</b>
       <br>
-      <% if @expenses.any? %>
       <b style="font-size: 1.1em;">Despesa:</b>
-      <% end %>
     </div>
     <div class="inlineblockDiv" style="text-align: right;">
-      <b style="color: green; font-size: 1.1em;"><%= number_to_currency(@profit,  :unit => "R$ ", :separator => ",", :delimiter => ".") %></b><br>
-      <% if @expenses.any? %>
-        <b style="color: red; font-size: 1.1em;"><%= number_to_currency(@cost,  :unit => "R$ ", :separator => ",", :delimiter => ".") %></b><br>
+      <% if @profit > 0 %>
+        <b style="color: green; font-size: 1.1em;"><%= number_to_currency(@profit,  :unit => "R$ ", :separator => ",", :delimiter => ".") %></b><br>
+      <% elsif @profit < 0 %>
+        <b style="color: red; font-size: 1.1em;"><%= number_to_currency(@profit,  :unit => "R$ ", :separator => ",", :delimiter => ".") %></b><br>
+      <% else %>
+        <b style="font-size: 1.1em;"><%= number_to_currency(@profit,  :unit => "R$ ", :separator => ",", :delimiter => ".") %></b><br>
       <% end %>
-    </div>
+      <% if @cost > 0 %>      
+        <b style="color: red; font-size: 1.1em;"><%= number_to_currency(@cost,  :unit => "R$ ", :separator => ",", :delimiter => ".") %></b><br>
+      <% else %>
+        <b style="font-size: 1.1em;"><%= number_to_currency(@cost,  :unit => "R$ ", :separator => ",", :delimiter => ".") %></b><br>
+      <% end %>
     </div>
   </div>
 </div>

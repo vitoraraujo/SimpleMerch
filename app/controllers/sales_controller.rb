@@ -1,6 +1,21 @@
 class SalesController < ApplicationController
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
   
+  def searching
+  end
+
+  def search
+    @sales = current_user.goods.where("quantity > ?", 0)
+    @sales = @sales.where("description LIKE ?", "%#{params[:description]}%") if params[:description] != ""
+    @sales = @sales.where("buy_day = ?", params[:buy_day]) if params[:buy_day] != ""
+    @sales = @sales.where("buy_month = ?", params[:buy_month]) if params[:buy_month] != ""
+    @sales = @sales.where("buy_year = ?", params[:buy_year]) if params[:buy_year] != ""
+    @sales = @sales.where("kind LIKE ?", "%#{params[:kind]}%") if params[:kind] != ""
+    @sales = @sales.where("buyed_from LIKE ?", "%#{params[:buyed_from]}%") if params[:buyed_from] != ""
+    
+    render template: 'sales/index' 
+  end
+
   # GET /sales
   # GET /sales.json
   def index

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get    '/geral',   to: 'general#general'
   get    '/signup',  to: 'users#new'
   get    '/goods/buscando', to: 'goods#searching'
+  get    '/sales/buscando', to: 'sales#searching'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   resources :expenses
   resources :sales
 
+  post  'sales/busca' => 'sales#search' 
   post  'goods/busca' => 'goods#search' 
   post 'geral/busca' => 'general#search'
 

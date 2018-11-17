@@ -51,7 +51,7 @@ class GoodsController < ApplicationController
     if good_params[:buy_year] == "" || good_params[:buy_year].nil?
       good_params[:buy_year] = 2018
     end
-
+    
     @good = current_user.goods.build(good_params)
     if @good.save
       flash[:success] = "Mercadoria criada!"
